@@ -1,0 +1,28 @@
+
+<ehcache>
+
+	<!--<diskStore path="java.io.tmpdir"/> -->
+	<diskStore path="data/ehcache" />
+
+	<!--字段说明：
+	maxElementsInMemory：设置缓存中允许存放的最大条目数量
+	eternal：缓存内容是否永久存储
+	overflowToDisk：如果内存中的数据超过maxElementsInMemory，是否使用磁盘存储。
+	timeToLiveSeconds：缓存自创建日期起至失效时的间隔时间；
+	timeToIdleSeconds：缓存创建以后，最后一次访问缓存的日期至失效之时的时间间隔；
+	如果仅有timeToLiveSeconds那么自创建时间开始 间隔x后缓存失效；
+    如果没有timeToLiveSeconds那么自最后一次访问缓存 间隔y后 缓存失效；
+    如果既有timeToLiveSeconds也有timeToIdleSeconds那么取最小数算作间隔时间；min(x,y);
+	diskPersistent：磁盘存储的条目是否永久保存
+	diskExpiryThreadIntervalSeconds：磁盘清理线程的运行时间间隔
+	-->
+
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="120" timeToLiveSeconds="120"
+		diskPersistent="false" diskExpiryThreadIntervalSeconds="120" />
+
+	<cache name="cache1" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="7" timeToLiveSeconds="7" overflowToDisk="true"
+		diskPersistent="false" />
+
+</ehcache>
