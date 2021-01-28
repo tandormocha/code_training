@@ -32,12 +32,12 @@ public class Provider {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if ((o instanceof Consumer)){
-            Consumer consumer = (Consumer) o;
-            return Objects.equals(getName(), consumer.getName()) &&
-                    Objects.equals(getPassword(), consumer.getPassword());
-        }
+//        if (this == o) return true;
+//        if ((o instanceof Consumer)){
+//            Consumer consumer = (Consumer) o;
+//            return Objects.equals(getName(), consumer.getName()) &&
+//                    Objects.equals(getPassword(), consumer.getPassword());
+//        }
         return false;
     }
 

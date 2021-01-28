@@ -176,6 +176,12 @@
             <version>3.6.7</version>
         </dependency>
 
+        <!-- flume核心依赖 -->
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-core</artifactId>
+            <version>1.8.0</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,5 +1,8 @@
 package com.kouyy.training.dowith.oldJava;
 
+/**
+ * sql拼接
+ */
 public class Demo{
     public static void main(String[] args) throws InterruptedException {
         Integer[] ids={5862,4743,1582};

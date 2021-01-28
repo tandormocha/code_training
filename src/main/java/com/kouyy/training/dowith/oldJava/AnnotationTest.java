@@ -1,5 +1,8 @@
 package com.kouyy.training.dowith.oldJava;
 
+/**
+ * 注解训练
+ */
 @MyAnnotation("this is ")
 public class AnnotationTest {
 

@@ -8,9 +8,15 @@ import java.util.*;
  */
 public class ArrayTest {
     public static void main(String[] args) {
-        char[] arrA=new char[]{'b','g','f','d','h','b','t','i','r','p','q','s','f'};
-        char[] arrB=new char[]{'e','w','d','f','b','u','i','p','f','s','m','b','p'};
-        SortAndSelect(arrA,arrB);
+//        char[] arrA=new char[]{'b','g','f','d','h','b','t','i','r','p','q','s','f'};
+//        char[] arrB=new char[]{'e','w','d','f','b','u','i','p','f','s','m','b','p'};
+//        SortAndSelect(arrA,arrB);
+        int[] scores = new int[5];
+        for (int i = 0; i < scores.length; i++) scores[i] = i + 1;
+        for (int score : scores) System.out.println(score);
+
+        if (scores.length == 5) System.out.println("scores is 5");
+
     }
 
     public static void SortAndSelect(char[] arrA,char[] arrB){

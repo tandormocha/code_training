@@ -193,11 +193,11 @@ public class StreamDemo {
     }
 
     public static void fun8(){
-        List<Provider> list1 = Stream.of(new Provider("小米", "123456"), new Provider("苹果", "abc")).collect(Collectors.toList());
-        List<Consumer> list2= Stream.of(new Consumer("小米", "123456","北京"), new Consumer("苹果", "abc","上海"),
-                new Consumer("涉及到","收到","熬得到")).collect(Collectors.toList());
-        List<Consumer> collect = list2.stream().filter(consumer -> !list1.contains(consumer)).collect(Collectors.toList());
-        collect.forEach(c-> System.out.println(c.toString()));
+//        List<Provider> list1 = Stream.of(new Provider("小米", "123456"), new Provider("苹果", "abc")).collect(Collectors.toList());
+//        List<Consumer> list2= Stream.of(new Consumer("小米", "123456","北京"), new Consumer("苹果", "abc","上海"),
+//                new Consumer("涉及到","收到","熬得到")).collect(Collectors.toList());
+//        List<Consumer> collect = list2.stream().filter(consumer -> !list1.contains(consumer)).collect(Collectors.toList());
+//        collect.forEach(c-> System.out.println(c.toString()));
 
 
     }
