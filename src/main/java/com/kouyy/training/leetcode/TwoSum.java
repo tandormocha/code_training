@@ -7,7 +7,7 @@ import java.util.Map;
     你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。*/
 public class TwoSum {
 
-    //解法1：直接两边遍历
+    //解法1：直接两遍遍历
     public int[] twoSum1(int[] nums, int target) {
         int[] a=new int[2];
         for(int i=0;i<nums.length-1;i++){

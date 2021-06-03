@@ -182,6 +182,13 @@
             <artifactId>flume-ng-core</artifactId>
             <version>1.8.0</version>
         </dependency>
+
+        <!--阿里云SLS SDK-->
+        <dependency>
+            <groupId>com.aliyun.openservices</groupId>
+            <artifactId>aliyun-log</artifactId>
+            <version>0.6.33</version>
+        </dependency>
     </dependencies>
 
 </project>

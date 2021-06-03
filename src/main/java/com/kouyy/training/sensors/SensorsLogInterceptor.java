@@ -7,9 +7,7 @@ import org.apache.commons.codec.Charsets;
 import org.apache.flume.Event;
 import org.apache.flume.interceptor.Interceptor;
 
-import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class SensorsLogInterceptor implements Interceptor {
@@ -24,22 +22,20 @@ public class SensorsLogInterceptor implements Interceptor {
 
     @Override
     public Event intercept(Event event) {
-        String inputeBody=null;
-        byte[] outputBoday=null;
+        String inputeBody = null;
+        byte[] outputBoday = null;
 
         try {
             ArrayList<String> temp = new ArrayList<>();
-            //Base64转码和Gzip解压
-            inputeBody=new String(event.getBody(), Charsets.UTF_8);
-            byte[] bytes = inputeBody.getBytes("ISO8859-1");
-            String str = new String(bytes, "UTF-8");
-            String urldecode = URLDecoder.decode(str, "UTF-8");
-            byte[] decode = Base64Coder.decode(urldecode);
-            String jsons = GZIPUtils.uncompressToString(decode);
+
+            inputeBody = new String(event.getBody(), Charsets.UTF_8);
+            String sensorsJsonArray = SensorsLogUtil.getSensorsJsonArray(inputeBody);
 
             //将json数组转为\n分割的字符串，同时进行ID-MAPPING
-            JSONArray objects = JSONArray.parseArray(jsons);
-            for (Object item :objects){
+            JSONArray objects = JSONArray.parseArray(sensorsJsonArray);
+
+            for (Object item : objects) {
+                String map_id = "";
                 JSONObject itemObj = JSON.parseObject(item.toString());
 
                 String distinct_id = itemObj.getString("distinct_id");
@@ -47,15 +43,18 @@ public class SensorsLogInterceptor implements Interceptor {
                 String et = itemObj.getString("event");
 
                 //ID-MAPPING
-                if("track".equals(type)){
-                    
+                if ("track".equals(type)) {
+
+                } else if ("track_signup".equals(type)){
+
+                }else if("profile_set".equals(type)){
+
+                }else if("profile_increment".equals(type)){
+
                 }
 
 
-
             }
-
-
 
 
             //1)公共字段
@@ -74,9 +73,9 @@ public class SensorsLogInterceptor implements Interceptor {
 //                temp.add(new JSONObject(fields).toJSONString());
 //            }
             //3)Json obj 拼接
-            outputBoday=String.join("\n",temp).getBytes();
-        }catch (Exception e){
-            System.out.println("输入数据:"+inputeBody);
+            outputBoday = String.join("\n", temp).getBytes();
+        } catch (Exception e) {
+            System.out.println("输入数据:" + inputeBody);
             e.printStackTrace();
         }
         event.setBody(outputBoday);

@@ -1,13 +1,40 @@
 package com.kouyy.training.sensors;
 
-import org.apache.commons.lang.StringUtils;
-
 import java.net.URLDecoder;
 
 public class SensorsLogUtil {
 
     public static final String ENCODE_UTF_8 = "UTF-8";
     public static final String ENCODE_ISO_8859_1 = "ISO-8859-1";
+
+    public static String getSensorsGzipLog(String log) throws Exception {
+        String[] splits = log.split(" \\++_ ");
+        String content = "";
+        String gzipLog = "";
+
+        if (log.contains("GET")) {
+            content = "get_log";
+        } else if (log.contains("POST")) {
+            content = splits[6].replaceAll("\"", "");
+        }
+
+        if (content.contains("gzip=1")) {
+            for (String str : content.split("&")) {
+                if (str.contains("data_list=")) {
+                    gzipLog = str.split("=")[1];
+                }
+            }
+        } else {
+            if (content.contains("data_list=")) {
+                gzipLog = content.split("=")[1];
+            } else {
+                gzipLog = content;
+            }
+        }
+
+        return gzipLog;
+    }
+
 
     public static String getSensorsJsonArray(String log) throws Exception {
         String[] splits = log.split(" \\++_ ");
@@ -32,6 +59,10 @@ public class SensorsLogUtil {
             } else {
                 jsonArray = parseBase64Log(content);
             }
+        }
+
+        if (!jsonArray.startsWith("[")) {
+            jsonArray = "[" + jsonArray + "]";
         }
         return jsonArray;
     }

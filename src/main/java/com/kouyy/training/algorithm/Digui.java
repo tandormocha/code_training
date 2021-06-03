@@ -13,7 +13,6 @@ public class Digui {
         print(100);
         long time2 = System.currentTimeMillis();
         System.out.println("所用时间为"+(time2-time1)+"s");
-
     }
 
     //递归的所有变量都储存在栈中，如果递归太深，容易发生堆栈溢出
